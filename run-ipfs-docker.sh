@@ -3,13 +3,20 @@
 # Create docker container
 #
 
+if [ -z "$1" ]; then
+ echo
+ echo "Usage: ./$(basename $0) <container_name>"
+ echo
+ exit 1
+fi
+
 STAGING_DIR="/opt/docker/data/ipfs-export"
 DATA_DIR="/opt/docker/data/ipfs"
 
 IMG="zekaf/go-ipfs"
 TAG="latest"
 
-IPFS_CT="ipfs-node"
+IPFS_CT="$1"
 
 docker run -d \
 	--restart=always \
