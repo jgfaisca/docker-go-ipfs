@@ -1,2 +1,2 @@
 # docker-ipfs
-Automated dockerhub build for [IPFS](http://ipfs.io)
+Automated dockerhub build for Go [IPFS](http://ipfs.io)
