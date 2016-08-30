@@ -1,24 +1,23 @@
 #!/bin/bash
 #
-# Add host files to IPFS container
+# Add host file/dir to IPFS container
 #
 
 if [ -z "$1" ]; then
  echo
- echo "Usage: ./$(basename $0) <file>"
+ echo "Usage: ./$(basename $0) <file/dir>"
  echo
  exit 1
 fi
 
-# Host directories
+# Host staging directory
 STAGING_DIR="/opt/docker/data/ipfs-export"
-DATA_DIR="/opt/docker/data/ipfs"
 
 # IPFS container
 IPFS_CT="ipfs-node"
 
-# copy files to staging directory
+# copy file/dir to staging directory
 cp -r $1 $STAGING_DIR
 
-# add file to IPFS container
+# add file/dir to IPFS container
 docker exec $IPFS_CT ipfs add -r /export/$1
