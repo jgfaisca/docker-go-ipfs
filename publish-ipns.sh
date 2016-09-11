@@ -5,13 +5,13 @@
 # uri = /ipns/<PEER_ID>/<FILE_NAME>
 #
 # Step 1 - Create a publish directory
-# > mkdir -p /opt/publish
+# e.g. > mkdir -p $HOME/publish
 #
 # Step 2 - Copy files to the publish directory
-# > cp index.html /opt/publish
+# e.g. > cp index.html $HOME/publish
 #
-# Step 3 - Run this script:
-# ./publish-ipns.sh /opt/publish/
+# Step 3 - Run the script
+# e.g. > ./publish-ipns.sh $HOME/publish/
 #
 # Whenever you update your files, just do step 3
 # again, and IPNS will make sure anyone asking for
