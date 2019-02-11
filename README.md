@@ -2,9 +2,9 @@
 Automated dockerhub build for Go [IPFS](http://ipfs.io)
 
 ### RUN
-$ ./create-docker-network.sh <p>
-$ ./build_local.sh
-$ ./run-ipfs-docker.sh go-ipfs
+$ ./create-docker-network.sh <br>
+$ ./build_local.sh <br>
+$ ./run-ipfs-docker.sh go-ipfs <br>
 
 ### LOG
 $ docker logs -f go-ipfs  
