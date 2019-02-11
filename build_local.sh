@@ -12,6 +12,7 @@ procs=$((procs+1))
 sed -i -e 's/\-j3/\-j'${procs}'/g' Dockerfile.local
 
 IMAGE="$(grep IMAGE Dockerfile | awk '{print $3}' )"
+echo IMAGE=$IMAGE
 
 # Build image
 docker build -f Dockerfile.local -t ${IMAGE} .
