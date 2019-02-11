@@ -3,7 +3,7 @@
 # Add host file/dir to IPFS container
 #
 
-if [ -z "$1" ]; then
+if [ "$#" -ne 1 ]; then
  echo
  echo "Usage: ./$(basename $0) <file/dir>"
  echo
