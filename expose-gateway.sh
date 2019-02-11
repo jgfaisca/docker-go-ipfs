@@ -4,7 +4,7 @@
 # (by default, the gateway is only accessible locally)
 #
 
-if [ -z "$1" ]; then
+if [ "$#" -ne 1 ]; then
  echo
  echo "Usage: ./$(basename $0) <container_name>"
  echo
