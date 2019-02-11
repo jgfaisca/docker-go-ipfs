@@ -17,17 +17,20 @@
 # docker run --rm -it --net isolated_nw --ip 10.17.0.2 nginx
 #
 
+# variables
 NETNAME="isolated_nw"
 SUBNET="10.17.0.0/16"
 GATEWAY="10.17.0.1"
 
+
 # create a new bridge network with your subnet and gateway for your ip block
 CMD="docker -D network create --subnet $SUBNET --gateway $GATEWAY $NETNAME"
 echo $CMD
-eval $CMD
 
-# print 
-echo
-echo "NETWORK NAME=$NETNAME"
-echo "SUBNET=$SUBNET"
-echo "GATEWAY=$GATEWAY"
+if eval $CMD ; then
+    docker network inspect --verbose NETWORK $NETNAME
+else
+    echo "Command failed"
+fi
+
+
