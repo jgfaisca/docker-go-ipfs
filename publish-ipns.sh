@@ -20,7 +20,7 @@
 
 
 # validate args
-if [ $# -ne 1 ] ; then
+if [ "$#" -ne 1 ]; then
    echo ""
    echo "Usage: ${0} '<directory>"
    echo "<directory> directory to publish"
