@@ -7,7 +7,7 @@ $ ./build_local.sh <br>
 $ ./run-ipfs-docker.sh ipfs-node 10.17.0.6<br>
 
 ### LOG
-$ docker logs -f go-ipfs  
+$ docker logs -f ipfs-node  
 
 ### TEST
 $ docker exec -it 'ipfs-node' ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme
