@@ -12,5 +12,5 @@ $ docker logs -f go-ipfs
 ### TEST
 $ docker exec -it 'go-ipfs' ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme
 
-### CONSOLE
+### SHELL CONSOLE
 $ docker exec -it 'go-ipfs' ipfs bash
