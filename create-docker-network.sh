@@ -29,8 +29,6 @@ echo $CMD
 
 if eval $CMD ; then
     docker network inspect --verbose NETWORK $NETNAME
-else
-    echo "Command failed"
 fi
 
 
