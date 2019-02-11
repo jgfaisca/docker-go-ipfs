@@ -3,9 +3,9 @@
 # Create docker container
 #
 
-if [ -z "$1" ]; then
+if [ "$#" -ne 2 ]; then
  echo
- echo "Usage: ./$(basename $0) <container_name>"
+ echo "Usage: ./$(basename $0) <container_name> <ip_address>"
  echo
  exit 1
 fi
@@ -19,13 +19,13 @@ TAG="latest"
 
 # Docker network
 NET_NAME="isolated_nw"
-IPFS_IP="10.17.0.6"
+IP_ADDRESS="$2"
 
 # Docker IPFS container
 IPFS_CT="$1"
 
 docker run -d \
-	--net $NET_NAME --ip $IPFS_IP \
+	--net $NET_NAME --ip $IP_ADDRESS \
 	--name $IPFS_CT \
 	--restart=always \
 	--volume $STAGING_DIR/$IPFS_CT:/export --volume $DATA_DIR/$IPFS_CT:/data/ipfs \
