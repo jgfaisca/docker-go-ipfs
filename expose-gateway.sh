@@ -15,7 +15,7 @@ fi
 IPFS_CT="$1"
 
 # Get current IPFS configuration
-CURRENT_GW=$(docker exec ipfs-node ipfs config Addresses.Gateway)
+CURRENT_GW=$(docker exec $IPFS_CT ipfs config Addresses.Gateway)
 CURRENT_PORT=$(echo -n $CURRENT_GW | tail -c 4)
 
 # modify IPFS configuration
