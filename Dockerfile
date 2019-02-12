@@ -14,7 +14,8 @@ ENV IPFS_LOGGING ""
 ENV TERM xterm
 
 # -- Install dependencies --
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update && apt-get install -y curl snap
+RUN snap install --classic go
 
 # -- Install IPFS ---
 RUN curl -O https://dist.ipfs.io/go-ipfs/${IPFS_VERSION}/go-ipfs_${IPFS_VERSION}_linux-amd64.tar.gz \
