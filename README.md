@@ -13,4 +13,4 @@ $ docker logs -f ipfs-node
 $ docker exec -it 'ipfs-node' ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme
 
 ### SHELL CONSOLE
-$ docker exec -it 'ipfs-node' ipfs bash
+$ docker exec -it 'ipfs-node' bash
