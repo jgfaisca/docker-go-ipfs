@@ -14,7 +14,7 @@ ENV IPFS_LOGGING ""
 ENV TERM xterm
 
 # -- Install dependencies --
-RUN apt-get update && apt-get install -y curl snap
+RUN apt-get update && apt-get install -y curl snapd
 RUN snap install --classic go
 RUN go get -u github.com/ipfs/ipfs-update
 
