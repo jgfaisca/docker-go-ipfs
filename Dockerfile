@@ -14,7 +14,7 @@ ENV IPFS_LOGGING ""
 ENV TERM xterm
 
 # -- Install dependencies --
-RUN apt-get update && apt-get install -y curl 
+RUN apt-get update && apt-get install -y curl software-properties-common
 RUN add-apt-repository ppa:longsleep/golang-backports \
 	&& sudo apt-get update && apt-get install golang-go
 RUN go get -u github.com/ipfs/ipfs-update
