@@ -6,7 +6,7 @@ MAINTAINER Jose G. Faisca <jose.faisca@gmail.com>
 
 # -- IPFS variables -- 
 ENV IMAGE demo/go-ipfs
-ENV IPFS_VERSION v0.4.6 
+ENV IPFS_VERSION v0.4.18
 ENV IPFS_PATH /data/ipfs
 ENV IPFS_LOGGING ""
 
@@ -14,14 +14,16 @@ ENV IPFS_LOGGING ""
 ENV TERM xterm
 
 # -- Install dependencies --
-RUN apt-get update && apt-get install -y curl software-properties-common
-RUN add-apt-repository ppa:longsleep/golang-backports \
-	&& apt-get update && apt-get install golang-go
-RUN go get -u github.com/ipfs/ipfs-update
+RUN apt-get update && apt-get install -y curl 
 
 # -- Install IPFS ---
-RUN ipfs-update install latest && mkdir -p $IPFS_PATH
-
+RUN curl -O https://dist.ipfs.io/go-ipfs/${IPFS_VERSION}/go-ipfs_${IPFS_VERSION}_linux-amd64.tar.gz \
+	&& tar xvzf go-ipfs_${IPFS_VERSION}_linux-amd64.tar.gz \
+	&& mv go-ipfs/ipfs /usr/local/bin/ipfs \
+	&& rm -rf go-ipfs \
+	&& rm -f go-ipfs_${IPFS_VERSION}_linux-amd64.tar.gz \
+	&& mkdir -p $IPFS_PATH
+	
 # -- Clean --
 RUN cd / \
         && apt-get autoremove -y \
