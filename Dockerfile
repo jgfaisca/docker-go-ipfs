@@ -16,14 +16,10 @@ ENV TERM xterm
 # -- Install dependencies --
 RUN apt-get update && apt-get install -y curl snap
 RUN snap install --classic go
+RUN go get -u github.com/ipfs/ipfs-update
 
 # -- Install IPFS ---
-RUN curl -O https://dist.ipfs.io/go-ipfs/${IPFS_VERSION}/go-ipfs_${IPFS_VERSION}_linux-amd64.tar.gz \
-	&& tar xvzf go-ipfs_${IPFS_VERSION}_linux-amd64.tar.gz \
-	&& mv go-ipfs/ipfs /usr/local/bin/ipfs \
-	&& rm -rf go-ipfs \
-	&& rm -f go-ipfs_${IPFS_VERSION}_linux-amd64.tar.gz \
-	&& mkdir -p $IPFS_PATH
+RUN  ipfs-update install latest && mkdir -p $IPFS_PATH
 
 # -- Clean --
 RUN cd / \
