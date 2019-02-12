@@ -14,12 +14,13 @@ ENV IPFS_LOGGING ""
 ENV TERM xterm
 
 # -- Install dependencies --
-RUN apt-get update && apt-get install -y curl snapd
-RUN snap install --classic go
+RUN apt-get update && apt-get install -y curl 
+RUN add-apt-repository ppa:longsleep/golang-backports \
+	&& sudo apt-get update && apt-get install golang-go
 RUN go get -u github.com/ipfs/ipfs-update
 
 # -- Install IPFS ---
-RUN  ipfs-update install latest && mkdir -p $IPFS_PATH
+RUN ipfs-update install latest && mkdir -p $IPFS_PATH
 
 # -- Clean --
 RUN cd / \
