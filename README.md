@@ -19,5 +19,5 @@ $ docker exec -it 'ipfs-node' ipfs version
 #### Readme
 $ docker exec -it 'ipfs-node' ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme
 
-### SHELL CONSOLE
+### CONSOLE
 $ docker exec -it 'ipfs-node' bash
