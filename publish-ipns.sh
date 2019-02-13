@@ -30,7 +30,7 @@ fi
 
 # generate uri
 DIR="$1"
-OUTPUT1=$(ipfs add $FILE --recursive | tail -1) # file hash
+OUTPUT1=$(ipfs add $DIR --recursive | tail -1) # file hash
 DIR_HASH=$(echo $OUTPUT1 | awk '{print $2}' | xargs)
 OUTPUT2=$(ipfs name publish $DIR_HASH)
 OUTPUT3=$(echo $OUTPUT2 | awk '{print $3}' | xargs)
