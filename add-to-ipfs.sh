@@ -2,6 +2,18 @@
 #
 # Add host file/dir to IPFS container
 #
+# Add file example:
+# $ echo "123" > test.txt
+# $ sudo ./add-to-ipfs.sh ipfs-node ./test.txt
+# 4 B / 4 B  100.00%added QmTEzo7FYzUCd5aq7bGKoMLfsbbsebpfARRZd4Znejb25R test.txt
+# 
+# Add dir example:
+# $ mkdir test-dir
+# $ echo "456" > ./test-dir/test.txt
+# $ sudo ./add-to-ipfs.sh ipfs-node ./test-dir
+# added QmPgW6BkabgZAgHnytZQesjhGjEFmtAs4AyANLwgJtnYaQ test-dir/test.txt
+# 4 B / 4 B  100.00%added Qmb7t2RVNuMY1DCrC4sEodMcDzGbnKUEtBGbfqBzM3YUQH test-dir
+
 
 if [ "$#" -ne 2 ]; then
  echo
