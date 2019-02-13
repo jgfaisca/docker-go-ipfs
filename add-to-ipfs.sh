@@ -10,14 +10,18 @@ if [ "$#" -ne 2 ]; then
  exit 1
 fi
 
-# Host staging directory
-STAGING_DIR="/opt/docker/data/ipfs-export"
-
 # IPFS container
 IPFS_CT="$1"
+
+# host staging directory
+STAGING_DIR="/opt/docker/export/$IPFS_CT"
 
 # copy file/dir to staging directory
 cp -r $2 $STAGING_DIR
 
 # add file/dir to IPFS container
-docker exec $IPFS_CT ipfs add -r /export/$2
+if [ -d "$2" ]; then
+   docker exec $IPFS_CT ipfs add -r /export/$2
+else
+   docker exec $IPFS_CT ipfs add /export/$2
+fi
