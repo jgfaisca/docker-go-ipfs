@@ -31,14 +31,14 @@ fi
 
 # remove key name if already exists
 KEY_NAME=$2
-ipfs key list | grep $KEY_NAME
+ipfs key list | grep $KEY_NAME > /dev/null 
 if [ $? -eq 0 ]; then
     ipfs key rm $KEY_NAME
 fi
 
 # run
 DIR="$1"
-ipfs key gen --type=rsa --size=2048 $KEY_NAME
+ipfs key gen --type=rsa --size=2048 $KEY_NAME > /dev/null 
 OUTPUT1=$(ipfs add --silent $DIR --recursive | tail -1)
 DIR_HASH=$(echo $OUTPUT1 | awk '{print $2}' | xargs)
 OUTPUT2=$(ipfs name publish --key=$KEY_NAME $DIR_HASH)
