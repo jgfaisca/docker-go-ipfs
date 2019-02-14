@@ -17,7 +17,7 @@ $ docker logs -f ipfs-node
 #### Version
 $ docker exec -it 'ipfs-node' ipfs version
 #### Node id
-docker exec -it 'ipfs-node' ipfs id
+$ docker exec -it 'ipfs-node' ipfs id
 #### Readme
 $ docker exec -it 'ipfs-node' ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme
 
