@@ -28,7 +28,7 @@ CMD="docker -D network create --subnet $SUBNET --gateway $GATEWAY $NETNAME"
 echo $CMD
 
 if eval $CMD ; then
-    docker network inspect --verbose NETWORK $NETNAME
+    docker network inspect --verbose $NETNAME
 fi
 
 
