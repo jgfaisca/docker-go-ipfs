@@ -29,12 +29,19 @@ if [ "$#" -ne 2 ]; then
    exit 1
 fi
 
+# remove key name if already exists
+KEY_NAME=$2
+ipfs key list | grep $KEY_NAME
+if [ $? -eq 0 ]; then
+    ipfs key rm $KEY_NAME
+fi
+
 # run
 DIR="$1"
-KEY=$(ipfs key gen --type=rsa --size=2048 $2)
+ipfs key gen --type=rsa --size=2048 $KEY_NAME
 OUTPUT1=$(ipfs add --silent $DIR --recursive | tail -1)
 DIR_HASH=$(echo $OUTPUT1 | awk '{print $2}' | xargs)
-OUTPUT2=$(ipfs name publish --key=$KEY $DIR_HASH)
+OUTPUT2=$(ipfs name publish --key=$KEY_NAME $DIR_HASH)
 OUTPUT3=$(echo $OUTPUT2 | awk '{print $3}' | xargs)
 PEER_ID=${OUTPUT3: : -1}
 OUTPUT4=$(ipfs name resolve $PEER_ID)
