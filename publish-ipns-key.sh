@@ -29,16 +29,15 @@ if [ "$#" -ne 2 ]; then
    exit 1
 fi
 
-# remove key name if already exists
+# generate a key if doesn't exists
 KEY_NAME=$2
 ipfs key list | grep $KEY_NAME > /dev/null 
-if [ $? -eq 0 ]; then
-    ipfs key rm $KEY_NAME > /dev/null 
+if [ $? -ne 0 ]; then
+    ipfs key gen --type=rsa --size=2048 $KEY_NAME > /dev/null  
 fi
 
 # run
 DIR="$1"
-ipfs key gen --type=rsa --size=2048 $KEY_NAME > /dev/null 
 OUTPUT1=$(ipfs add --silent $DIR --recursive | tail -1)
 DIR_HASH=$(echo $OUTPUT1 | awk '{print $2}' | xargs)
 OUTPUT2=$(ipfs name publish --key=$KEY_NAME $DIR_HASH)
