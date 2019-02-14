@@ -28,7 +28,7 @@ if [ "$#" -ne 1 ]; then
    exit 1
 fi
 
-# generate output
+# run
 DIR="$1"
 OUTPUT1=$(ipfs add --silent $DIR --recursive | tail -1) 
 DIR_HASH=$(echo $OUTPUT1 | awk '{print $2}' | xargs)
@@ -37,7 +37,7 @@ OUTPUT3=$(echo $OUTPUT2 | awk '{print $3}' | xargs)
 PEER_ID=${OUTPUT3: : -1} 
 OUTPUT4=$(ipfs name resolve $PEER_ID)
 
-# check /ipns/<PEER_ID>
+# print /ipns/<PEER_ID>
 if [ "$OUTPUT4" == "/ipfs/$DIR_HASH" ] ; then
 	OUTPUT5="/ipns/$PEER_ID" 
 	echo $OUTPUT5
