@@ -33,7 +33,7 @@ fi
 KEY_NAME=$2
 ipfs key list | grep $KEY_NAME > /dev/null 
 if [ $? -eq 0 ]; then
-    ipfs key rm $KEY_NAME
+    ipfs key rm $KEY_NAME > /dev/null 
 fi
 
 # run
