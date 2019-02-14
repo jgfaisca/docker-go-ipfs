@@ -30,16 +30,16 @@ fi
 
 # generate uri
 DIR="$1"
-OUTPUT1=$(ipfs add $DIR --recursive | tail -1) # file hash
+OUTPUT1=$(ipfs add --silent $DIR --recursive | tail -1) 
 DIR_HASH=$(echo $OUTPUT1 | awk '{print $2}' | xargs)
 OUTPUT2=$(ipfs name publish $DIR_HASH)
 OUTPUT3=$(echo $OUTPUT2 | awk '{print $3}' | xargs)
-PEER_ID=${OUTPUT3: : -1} # Peer ID
+PEER_ID=${OUTPUT3: : -1} 
 OUTPUT4=$(ipfs name resolve $PEER_ID)
 
 # check
 if [ "$OUTPUT4" == "/ipfs/$DIR_HASH" ] ; then
-	URI="/ipns/$PEER_ID/" # URI
+	URI="/ipns/$PEER_ID" # URI
 	echo $URI
 	exit 0
    else
