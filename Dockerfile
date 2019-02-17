@@ -5,7 +5,7 @@ FROM ubuntu:latest
 MAINTAINER Jose G. Faisca <jose.faisca@gmail.com>
 
 # -- IPFS variables -- 
-ENV IMAGE demo/go-ipfs
+ENV IMAGE zekaf/go-ipfs
 ENV IPFS_VERSION v0.4.18
 ENV IPFS_PATH /data/ipfs
 ENV IPFS_LOGGING ""
