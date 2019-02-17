@@ -14,7 +14,7 @@ STAGING_DIR="/opt/docker/export"
 DATA_DIR="/opt/docker/data"
 
 # Docker image
-IMG="demo/go-ipfs"
+IMG="zekaf/go-ipfs"
 TAG="latest"
 
 # Docker network
